@@ -29,19 +29,21 @@ function onSubmitForm(event) {
     return;
   }
 
+  event.currentTarget.reset();
+
   for (let i = 0; i < amount; i++) {
     createPromise(i + 1, delay + step * i)
       .then(({ position, delay }) => {
         iziToast.show({
           message: `✅ Fulfilled promise ${position} in ${delay}ms`,
-          position: 'topCenter',
+          position: 'topRight',
           color: 'green',
         });
       })
       .catch(({ position, delay }) => {
         iziToast.show({
           message: `❌ Rejected promise ${position} in ${delay}ms`,
-          position: 'topCenter',
+          position: 'topRight',
           color: 'red',
         });
       });

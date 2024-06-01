@@ -55,13 +55,13 @@ flatpickr(datetimeInput, {
 
 function onBtnStartClick() {
   startBtn.disabled = true;
+  datetimeInput.disabled = true;
   timerId = setInterval(() => {
     const restTime = new Date(datetimeInput.value) - Date.now();
 
-    Object.entries(convertMs(restTime))
-      .forEach(([key, value]) => {
-        items[key].textContent = addLeadingZero(value);
-      });
+    Object.entries(convertMs(restTime)).forEach(([key, value]) => {
+      items[key].textContent = addLeadingZero(value);
+    });
 
     if (restTime < 1000) {
       clearInterval(timerId);

@@ -14,16 +14,24 @@ function toggleStartButton() {
   startButton.disabled = !startButton.disabled;
 }
 
+function toggleStopButton() {
+  stopButton.disabled = !stopButton.disabled;
+}
+
 let intervalId;
+
+toggleStopButton();
 
 startButton.addEventListener('click', () => {
   toggleStartButton();
+  toggleStopButton();
 
   intervalId = setInterval(changeBodyColor, 1000);
 });
 
 stopButton.addEventListener('click', () => {
   toggleStartButton();
+  toggleStopButton();
 
   clearInterval(intervalId);
 });
